@@ -1,0 +1,4 @@
+https://github.com/zalak01/Leetcode_pandas/new/main
+
+def sales_analysis(sales: pd.DataFrame, product: pd.DataFrame) -> pd.DataFrame:
+    return sales.merge(product)[["product_name","year","price"]]
