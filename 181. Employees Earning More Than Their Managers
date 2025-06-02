@@ -1,0 +1,9 @@
+https://leetcode.com/problems/employees-earning-more-than-their-managers/
+
+import pandas as pd
+
+def find_employees(employee: pd.DataFrame) -> pd.DataFrame:
+
+    result = employee.merge(employee, left_on = "id", right_on = "managerId")
+    result =  result[result["salary_y"] >  result["salary_x"]]
+    return result["name_y"].rename("Employee").to_frame()    
