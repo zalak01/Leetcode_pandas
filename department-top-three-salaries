@@ -1,0 +1,12 @@
+https://leetcode.com/problems/department-top-three-salaries/
+
+import pandas as pd
+
+def top_three_salaries(employee: pd.DataFrame, department: pd.DataFrame) -> pd.DataFrame:
+
+    result = employee.merge(department, left_on = "departmentId", right_on="id")
+    result["rnk"] = result.groupby("departmentId")["salary"].rank(method = 'dense', ascending = False)
+    result =  result[result["rnk"] <=3][["name_y","name_x","salary"]]
+    result.columns = ['Department','Employee','Salary']
+    return result
+
